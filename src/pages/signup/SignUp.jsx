@@ -15,16 +15,16 @@ export default function SignUp() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValues({ ...formValues, [name]: value });
-    setFormerrors(validation(formValues));
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setFormerrors(validation(formValues));
     setIsSubmit(true);
     setFormerrors(validation(formValues));
     if (Object.keys(formError).length === 0 && isSubmit) {
       try {
         const res = await axios.post(
-          "http://localhost:5000/api/auth/registers",
+          "http://localhost:5000/api/auth/register",
           formValues
         );
         console.log(res);
